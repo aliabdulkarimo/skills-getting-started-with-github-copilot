@@ -1,3 +1,4 @@
+// Teilnehmer: Ali Abdulkarim (aliabdulkarimo)
 document.addEventListener("DOMContentLoaded", () => {
   const activitiesList = document.getElementById("activities-list");
   const activitySelect = document.getElementById("activity");
