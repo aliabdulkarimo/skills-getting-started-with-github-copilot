@@ -34,6 +34,29 @@ document.addEventListener("DOMContentLoaded", () => {
         `;
 
         activitiesList.appendChild(activityCard);
+          // Teilnehmerliste als klassische Liste
+          let participantHTML = "<ul class='participants-list'>";
+          if (details.participants.length > 0) {
+            details.participants.forEach((participant) => {
+              participantHTML += `<li>${participant}</li>`;
+            });
+          } else {
+            participantHTML += `<li class='no-participants'>No participants yet</li>`;
+          }
+          participantHTML += "</ul>";
+
+          activityCard.innerHTML = `
+            <h4>${name}</h4>
+            <p>${details.description}</p>
+            <p><strong>Schedule:</strong> ${details.schedule}</p>
+            <p><strong>Availability:</strong> ${spotsLeft} spots left</p>
+            <div class="participants-section">
+              <strong>Participants:</strong>
+              ${participantHTML}
+            </div>
+          `;
+
+          activitiesList.appendChild(activityCard);
 
         // Add option to select dropdown
         const option = document.createElement("option");
