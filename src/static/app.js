@@ -1,5 +1,3 @@
-// Teilnehmer: Ali Abdulkarim (aliabdulkarimo)
-
 document.addEventListener("DOMContentLoaded", () => {
   const activitiesList = document.getElementById("activities-list");
   const activitySelect = document.getElementById("activity");
@@ -22,14 +20,15 @@ document.addEventListener("DOMContentLoaded", () => {
         const spotsLeft =
           details.max_participants - details.participants.length;
 
-        // ✅ FIX: richtige Klasse "participants"
+        const participantItems = details.participants.length
+          ? details.participants.map((participant) => `<li>${participant}</li>`).join("")
+          : '<li class="participant-empty">No participants yet</li>';
+
         const participantsHtml = `
-          <p><strong>Participants:</strong></p>
-          <ul class="participants">
-            ${details.participants
-              .map((participant) => `<li>${participant}</li>`)
-              .join("")}
-          </ul>
+          <div class="participants-section">
+            <p class="participants-title">Participants</p>
+            <ul class="participants-list">${participantItems}</ul>
+          </div>
         `;
 
         activityCard.innerHTML = `
